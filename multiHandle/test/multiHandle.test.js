@@ -16,6 +16,7 @@ describe('ContestantList multihandle', () => {
         expect(list.sorted("A")).to.deep.equal(["Alexander"]);
         expect(list.sorted("H")).to.deep.equal(["Alexander"]);
         expect(list.sorted("W")).to.deep.equal(["Alexander"]);
+        expect(() => { list.sorted("XYZ"); }).to.throw;
     });
 
     it('should have four entries and be correct', () => {

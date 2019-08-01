@@ -14,6 +14,7 @@ class ContestantNode {
 
 module.exports = class ContestantList {
     constructor() {
+        this.validAttributes = [ 'H', 'W', 'A' ];
         this.head = {
             A: null,
             H: null,
@@ -73,6 +74,9 @@ module.exports = class ContestantList {
     }
 
     sorted(attribute) {
+        if (!this.validAttributes.includes(attribute)) {
+            throw new Error("not a valid attribute");
+        }
         let cur;
         let output = [];
         cur = this.head[attribute];
