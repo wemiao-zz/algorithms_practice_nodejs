@@ -6,9 +6,7 @@ describe('ContestantList multihandle', () => {
     let list;
     it('should create empty Contestant list', () => {
         list = new ContestantList();
-        expect(list.head.A).to.be.null;
-        expect(list.head.H).to.be.null;
-        expect(list.head.W).to.be.null;
+        expect(list.head).to.be.null;
     });
 
     it('should have one entry Alexander', () => {
