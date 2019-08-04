@@ -8,23 +8,25 @@ describe('BST test', () => {
     it('should initialize an empty BST', () => {
         bst = new BST();
         expect(typeof bst).to.equal('object');
-        expect(bst.getRoot()).to.be.null;
     });
 
-    it('should insert a value into root', () => {
+    it('should create a random tree and compare sorted array with inorder traversal', () => {
         let set = new Set();
-        for (let i = 0; i < 20; i++) {
-            value = getRandomInt(1000);
+        let values = [];
+        for (let i = 0; i < 10000; i++) {
+            value = getRandomInt(100000);
             if (!set.has(value)) {
                 bst.insert(value);
                 set.add(value);
+                values.push(value);
             }
         }
-        bst.printTree(bst.getRoot(), null, true);
+        values.sort((a, b) => a - b);
+        for (let val of values) {
+            expect(bst.find(val)).to.equal(true);
+        }
+        expect(bst.inOrder()).to.deep.equal(values);
     });
-
-    // print constructed binary tree
-    //printTree(root, nullptr, false);
 });
 
 function getRandomInt(max) {

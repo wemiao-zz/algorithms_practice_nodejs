@@ -1,6 +1,5 @@
 const Node = require('./Node');
-const Trunk = require('./Trunk');
-const Queue = require('../queue/queue');
+const helpers = require('./helpers');
 
 module.exports = class BST {
     constructor(root = null) {
@@ -13,44 +12,24 @@ module.exports = class BST {
             this.root = new Node(value);
             return;
         }
-        insertNode(this.root, value);
+        helpers.insert(this.root, value);
     }
 
-    getRoot() {
-        return this.root;
+    // search for a value in BST, boolean
+    find(value) {
+        return helpers.find(value, this.root);
     }
 
-    // Recursive function to print binary tree
-    // It uses inorder traversal
-    printTree(root, parent, isRight)
-    {
-        if (root === null) {
-            return;
-        }
+    // print the tree
+    printTree() {
+        helpers.printTree(this.root, null, true);
+    }
 
-        let prev_str = '    ';
-        let trunk = new Trunk(parent, prev_str);
-
-        this.printTree(root.right, trunk, true);
-
-        if (parent === null) {
-            trunk.text = '---';
-        } else if (isRight) {
-            trunk.text = '.---';
-            prev_str = '   |';
-        } else {
-            trunk.text = '`---';
-            parent.text = prev_str;
-        }
-
-        showTrunks(trunk);
-        console.log(root.value);
-
-        if (parent !== null)
-            parent.text = prev_str;
-        trunk.text = '   |';
-
-        this.printTree(root.left, trunk, false);
+    // in order traversal, returns an array with the elements in order
+    inOrder() {
+        let arr = [];
+        helpers.inOrder(arr, this.root);
+        return arr;
     }
 
     nextlargest(node) {
@@ -84,31 +63,3 @@ module.exports = class BST {
         }
     }
 };
-
-function insertNode(node, value) {
-    if (node.value > value) {
-        if (node.left === null) {
-            node.left = new Node(value, node);
-            return;
-        }
-        insertNode(node.left, value);
-    } else if (node.value < value) {
-        if (node.right === null) {
-            node.right = new Node(value, node);
-            return;
-        }
-        insertNode(node.right, value);
-    } else {
-        throw new Error('equal node values not implemented yet');
-    }
-}
-
-// Helper function to print branches of the binary tree
-function showTrunks(p)
-{
-    if (p === null)
-        return;
-
-    showTrunks(p.parent);
-    process.stdout.write(p.text);
-}
