@@ -13,8 +13,8 @@ describe('BST test', () => {
     it('should create a random tree and compare sorted array with inorder traversal', () => {
         let set = new Set();
         let values = [];
-        for (let i = 0; i < 10000; i++) {
-            value = getRandomInt(100000);
+        for (let i = 0; i < 1000; i++) {
+            value = getRandomInt(10000);
             if (!set.has(value)) {
                 bst.insert(value);
                 set.add(value);

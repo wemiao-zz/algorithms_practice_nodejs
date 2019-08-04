@@ -1,4 +1,4 @@
-const Node = require('./Node');
+const TreeNode = require('./TreeNode');
 const helpers = require('./helpers');
 
 module.exports = class BST {
@@ -9,13 +9,13 @@ module.exports = class BST {
     // insert a value into BST
     insert(value) {
         if (this.root === null) {
-            this.root = new Node(value);
+            this.root = new TreeNode(value);
             return;
         }
         helpers.insert(this.root, value);
     }
 
-    // search for a value in BST, boolean
+    // search for a value in BST, will return true/false depending on if value was found
     find(value) {
         return helpers.find(value, this.root);
     }

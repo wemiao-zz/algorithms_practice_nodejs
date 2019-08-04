@@ -1,4 +1,4 @@
-const Node = require('./Node');
+const ListNode = require('./ListNode');
 
 module.exports = class LinkedList {
     constructor(head = null, tail = null) {
@@ -8,7 +8,7 @@ module.exports = class LinkedList {
 
     // add a value to the beginning of the linked list
     prepend(value) {
-        const node = new Node(value);
+        const node = new ListNode(value);
 
         if (this.head === null) {
             this.head = node;
@@ -23,7 +23,7 @@ module.exports = class LinkedList {
 
     // add a value to the end of the linked list
     append(value) {
-        const node = new Node(value);
+        const node = new ListNode(value);
 
         if (this.tail === null) {
             this.head = node;

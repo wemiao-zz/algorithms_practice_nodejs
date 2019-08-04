@@ -32,12 +32,12 @@ module.exports = class ContestantList {
                 cur = this.head[attribute];
                 while (cur !== null && cur[attribute] < attributes[this.validAttributes.indexOf(attribute)]) {
                     prev = cur;
-                    cur = cur.next[attribute]; 
+                    cur = cur.next[attribute];
                 }
                 if (prev === null) {
-                    this.head[attribute] = contestant; 
+                    this.head[attribute] = contestant;
                 } else {
-                    prev.next[attribute] = contestant;  
+                    prev.next[attribute] = contestant;
                 }
                 contestant.next[attribute] = cur;
             }
@@ -46,7 +46,7 @@ module.exports = class ContestantList {
 
     sorted(attribute) {
         if (!this.validAttributes.includes(attribute)) {
-            throw new Error("not a valid attribute");
+            throw new Error('not a valid attribute');
         }
         let cur;
         let output = [];

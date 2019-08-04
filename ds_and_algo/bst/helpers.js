@@ -1,16 +1,16 @@
-const Node = require('./Node');
+const TreeNode = require('./TreeNode');
 const Trunk = require('./Trunk');
 
 function insert(node, value) {
     if (node.value > value) {
         if (node.left === null) {
-            node.left = new Node(value, node);
+            node.left = new TreeNode(value, node);
             return;
         }
         insert(node.left, value);
     } else if (node.value < value) {
         if (node.right === null) {
-            node.right = new Node(value, node);
+            node.right = new TreeNode(value, node);
             return;
         }
         insert(node.right, value);
@@ -37,10 +37,10 @@ function find(value, node) {
 }
 
 // Helper function to print branches of the binary tree
-function showTrunks(p)
-{
-    if (p === null)
+function showTrunks(p) {
+    if (p === null) {
         return;
+    }
 
     showTrunks(p.parent);
     process.stdout.write(p.text);
@@ -71,8 +71,9 @@ function printTree(node, parent, isRight) {
     showTrunks(trunk);
     console.log(node.value);
 
-    if (parent !== null)
+    if (parent !== null) {
         parent.text = prev_str;
+    }
     trunk.text = '   |';
 
     this.printTree(node.left, trunk, false);

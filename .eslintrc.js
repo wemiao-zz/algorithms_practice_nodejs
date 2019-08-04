@@ -16,6 +16,8 @@ module.exports = {
     "rules": {
         "indent": ["error", 4, { "SwitchCase": 1}],
         "semi": ["error", "always"],
+        "curly": ["error"],
+        "brace-style": ["warn"],
         "quotes": [2, "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
         "no-trailing-spaces": [2]
     }
