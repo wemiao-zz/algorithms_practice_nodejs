@@ -15,6 +15,8 @@ module.exports = {
     },
     "rules": {
         "indent": ["error", 4, { "SwitchCase": 1}],
-        "semi": ["error", "always"]
+        "semi": ["error", "always"],
+        "quotes": [2, "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
+        "no-trailing-spaces": [2]
     }
 };
