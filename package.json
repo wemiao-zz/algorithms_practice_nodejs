@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha multiHandle/test"
+    "test": "mocha ds_and_algo/**/*.test.js --recursive"
   },
   "author": "",
   "license": "ISC",
