@@ -1,15 +1,17 @@
 {
-  "name": "appacademyeip",
+  "name": "algorithms_practice_nodejs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ds_and_algo/**/*.test.js --recursive"
+    "test": "mocha ds_and_algo/**/*.test.js --recursive",
+    "report": "nyc npm test"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^6.1.0"
+    "eslint": "^6.1.0",
+    "nyc": "^14.1.1"
   }
 }

@@ -1,8 +1,5 @@
 class ContestantNode {
     constructor(name, attributes, validAttributes) {
-        if (attributes.length !== validAttributes.length) {
-            throw new Error("Valid attributes length doesn't match attribute length");
-        }
         this.name = name;
         this.next = {};
         for (let i = 0; i < attributes.length; i++) {
