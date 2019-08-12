@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha ds_and_algo/**/*.test.js --recursive",
-    "report": "nyc npm test"
+    "report": "nyc npm test report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "author": "",
   "license": "ISC",
