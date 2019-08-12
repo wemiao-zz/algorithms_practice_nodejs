@@ -1,18 +1,23 @@
 {
-  "name": "algorithms_practice_nodejs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha ds_and_algo/**/*.test.js --recursive",
-    "report": "nyc npm test report --reporter=text-lcov > coverage.lcov && codecov"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "eslint": "^6.1.0",
-    "mocha": "^6.2.0",
-    "nyc": "^14.1.1"
-  }
+    "name": "algorithms_practice_nodejs",
+    "version": "1.0.1",
+    "description": "Algorithms practice in NodeJS",
+    "main": "index.js",
+    "scripts": {
+        "test": "mocha ds_and_algo/**/*.test.js --recursive",
+        "report": "nyc npm test --reporter=text-lcov > coverage.lcov && codecov",
+        "lint": "eslint ./ds_and_algo/*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wemiao/algorithms_practice_nodejs"
+    },
+    "author": "William Miao",
+    "license": "MIT",
+    "devDependencies": {
+        "chai": "^4.2.0",
+        "eslint": "^6.1.0",
+        "mocha": "^6.2.0",
+        "nyc": "^14.1.1"
+    }
 }
