@@ -4,13 +4,14 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-function printBST(size = 20) {
+module.exports = function printBST(size = 10, rand = true) {
     const bst = new BST();
     let set = new Set();
     let value;
     let values = [];
+    let sizeRand = rand ? size * 10 : (size / 2);
     for (let i = 0; i < size; i++) {
-        value = getRandomInt(size * 10);
+        value = getRandomInt(sizeRand);
         if (!set.has(value)) {
             bst.insert(value);
             set.add(value);
@@ -18,7 +19,5 @@ function printBST(size = 20) {
         }
     }
     bst.printTree();
-    console.log(bst.isBalanced());
-}
-
-process.argv.length > 2 ? printBST(process.argv[2]) : printBST();
+    return size;
+};

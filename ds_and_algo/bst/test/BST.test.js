@@ -43,6 +43,17 @@ describe('BST test', () => {
         expect(bst.isBalanced()).to.be.true;
     });
 
+    it('should get height and return true for this balanced BST', () => {
+        bst = new BST();
+        expect(bst.find(20)).to.be.false; // find for an empty tree should return false
+        bst.insert(2);
+        try {
+            bst.insert(2);
+        } catch (err) {
+            expect(err.toString()).to.equal('Error: equal node values not implemented yet');
+        }
+    });
+
     it('should get height and return false for this unbalanced BST', () => {
         bst = new BST();
         bst.insert(1);
