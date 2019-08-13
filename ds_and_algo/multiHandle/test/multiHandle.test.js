@@ -15,9 +15,16 @@ describe('ContestantList multihandle', () => {
         expect(list.sorted('W')).to.deep.equal(['Alexander']);
         try {
             list.sorted('XYZ');
-            expect.fail('should fail above');
         } catch (err) {
             expect(err.toString()).to.equal('Error: not a valid attribute');
+        }
+    });
+
+    it('should fail when list of attributes does not match valid attribute length', () => {
+        try {
+            list.add('Tom', 22);
+        } catch (err) {
+            expect(err.toString()).to.equal("Error: valid attribute length doesn't equal attribute length");
         }
     });
 
