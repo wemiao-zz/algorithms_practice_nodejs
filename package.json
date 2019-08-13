@@ -19,12 +19,5 @@
         "eslint": "^6.1.0",
         "mocha": "^6.2.0",
         "nyc": "^14.1.1"
-    },
-    "nyc": {
-        "all": true,
-        "exclude": [
-            ".eslintrc.js",
-            "node_modules/**"
-        ]
     }
 }
