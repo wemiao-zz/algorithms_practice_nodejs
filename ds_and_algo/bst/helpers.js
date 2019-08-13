@@ -89,9 +89,31 @@ function inOrder(arr, node) {
     }
 }
 
+function getHeight(node) {
+    if (node === null) {
+        return 0;
+    }
+    return Math.max(getHeight(node.left), getHeight(node.right)) + 1;
+}
+
+function isBalanced(node) {
+    if (node === null) {
+        return true;
+    }
+    const leftH = getHeight(node.left);
+    const rightH = getHeight(node.right);
+
+    if (Math.abs(leftH - rightH) < 2 && isBalanced(node.left) && isBalanced(node.right)) {
+        return true;
+    }
+    return false;
+}
+
 module.exports = {
     insert: insert,
     find: find,
     printTree: printTree,
-    inOrder: inOrder
+    inOrder: inOrder,
+    getHeight: getHeight,
+    isBalanced: isBalanced
 };

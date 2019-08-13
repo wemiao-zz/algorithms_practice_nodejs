@@ -32,34 +32,16 @@ module.exports = class BST {
         return arr;
     }
 
-    nextlargest(node) {
-        if (node === null) {
-            return;
-        }
-        return this.helperLargest(node, node.value, Number.MAX_SAFE_INTEGER);
+    // get the maximum height of this tree (lowest leaf node)
+    getHeight() {
+        return helpers.getHeight(this.root);
     }
 
-    helperLargest(node, target, diff) {
-        if (node === null) {
-            return;
-        }
-
-        if (node.parent !== null && node.parent.value > target) {
-            let curDiff = node.parent.value - target;
-            if (curDiff < diff) {
-                this.helperLargest(node.parent, target, diff);
-            }
-        }
-        if (node.right !== null && node.right.value > target) {
-            let curDiff = node.right.value - target;
-            if (curDiff < diff) {
-                this.helperLargest(node.right, target, diff);
-            }
-        }
-        if (diff === Number.MAX_SAFE_INTEGER) {
-            return null;
-        } else {
-            return target + diff;
-        }
+    // check whether BST is balanced (i.e. all height differences between subtrees < 2)
+    isBalanced() {
+        return helpers.isBalanced(this.root);
     }
+
+    // find common ancestor
+    //commonAncestor()
 };

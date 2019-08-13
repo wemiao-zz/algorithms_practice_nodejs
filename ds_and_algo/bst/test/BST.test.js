@@ -8,6 +8,7 @@ describe('BST test', () => {
     it('should initialize an empty BST', () => {
         bst = new BST();
         expect(typeof bst).to.equal('object');
+        expect(bst.getHeight()).to.equal(0);
     });
 
     it('should create a random tree and compare sorted array with inorder traversal', () => {
@@ -26,6 +27,34 @@ describe('BST test', () => {
             expect(bst.find(val)).to.equal(true);
         }
         expect(bst.inOrder()).to.deep.equal(values);
+    });
+
+    it('should get height and return true for this balanced BST', () => {
+        bst = new BST();
+        bst.insert(5);
+        bst.insert(10);
+        bst.insert(13);
+        bst.insert(8);
+        bst.insert(3);
+        bst.insert(2);
+        bst.insert(4);
+        expect(bst.inOrder()).to.deep.equal([2,3,4,5,8,10,13]);
+        expect(bst.getHeight()).to.equal(3);
+        expect(bst.isBalanced()).to.be.true;
+    });
+
+    it('should get height and return false for this unbalanced BST', () => {
+        bst = new BST();
+        bst.insert(1);
+        bst.insert(2);
+        bst.insert(3);
+        bst.insert(4);
+        bst.insert(5);
+        expect(bst.inOrder()).to.deep.equal([1,2,3,4,5]);
+        expect(bst.getHeight()).to.equal(5);
+        expect(bst.find(4)).to.be.true;
+        expect(bst.find(10)).to.be.false;
+        expect(bst.isBalanced()).to.be.false;
     });
 });
 
