@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "mocha ds_and_algo/**/*.test.js --recursive",
-        "report": "nyc npm test --reporter=text-lcov > coverage.lcov && codecov",
+        "report": "nyc --all --exclude .eslintrc.js npm test --reporter=text-lcov > coverage.lcov && codecov",
         "lint": "eslint ./ds_and_algo/*"
     },
     "repository": {
