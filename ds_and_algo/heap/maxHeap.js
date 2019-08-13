@@ -1,5 +1,5 @@
 // this is a max heap
-class Heap {
+module.exports = class MaxHeap {
     constructor(arr = []) {
         this.arr = arr;
     }
@@ -107,8 +107,4 @@ class Heap {
         this.siftDown(0);
         return popValue;
     }
-}
-
-const heap = new Heap([2,4,5]);
-
-heap.buildHeap();
+};

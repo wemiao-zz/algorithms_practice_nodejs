@@ -1,5 +1,5 @@
 // this is a min heap
-class Heap {
+module.exports = class MinHeap {
     constructor(arr = []) {
         this.arr = arr;
     }
@@ -107,8 +107,4 @@ class Heap {
         this.siftDown(0);
         return popValue;
     }
-}
-
-let heap = new Heap();
-
-console.log(heap);
+};

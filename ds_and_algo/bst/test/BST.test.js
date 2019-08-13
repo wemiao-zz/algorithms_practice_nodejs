@@ -40,10 +40,11 @@ describe('BST test', () => {
         bst.insert(4);
         expect(bst.inOrder()).to.deep.equal([2,3,4,5,8,10,13]);
         expect(bst.getHeight()).to.equal(3);
+        expect(bst.find(2)).to.be.true;
         expect(bst.isBalanced()).to.be.true;
     });
 
-    it('should get height and return true for this balanced BST', () => {
+    it('should throw an exception when trying to insert two equal length nodes', () => {
         bst = new BST();
         expect(bst.find(20)).to.be.false; // find for an empty tree should return false
         bst.insert(2);
@@ -64,6 +65,24 @@ describe('BST test', () => {
         expect(bst.inOrder()).to.deep.equal([1,2,3,4,5]);
         expect(bst.getHeight()).to.equal(5);
         expect(bst.find(4)).to.be.true;
+        expect(bst.find(2)).to.be.true;
+        expect(bst.find(10)).to.be.false;
+        expect(bst.find(0)).to.be.false;
+        expect(bst.isBalanced()).to.be.false;
+    });
+
+    it('should get height and return false for this unbalanced BST', () => {
+        bst = new BST();
+        bst.insert(5);
+        bst.insert(4);
+        bst.insert(3);
+        bst.insert(2);
+        bst.insert(1);
+        expect(bst.inOrder()).to.deep.equal([1,2,3,4,5]);
+        expect(bst.getHeight()).to.equal(5);
+        expect(bst.find(5)).to.be.true;
+        expect(bst.find(2)).to.be.true;
+        expect(bst.find(1)).to.be.true;
         expect(bst.find(10)).to.be.false;
         expect(bst.isBalanced()).to.be.false;
     });
