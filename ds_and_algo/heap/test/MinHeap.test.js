@@ -1,4 +1,4 @@
-const MinHeap = require('../MinHeap');
+const MinHeap = require('../MinHeap.js');
 const chai = require('chai');
 const expect = chai.expect;
 

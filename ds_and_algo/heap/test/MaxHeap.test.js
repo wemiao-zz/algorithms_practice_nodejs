@@ -1,4 +1,4 @@
-const MaxHeap = require('../MaxHeap');
+const MaxHeap = require('../MaxHeap.js');
 const chai = require('chai');
 const expect = chai.expect;
 
