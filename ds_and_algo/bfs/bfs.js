@@ -1,4 +1,4 @@
-function bfs(coord1, coord2, maze) {
+module.exports = function bfs(coord1, coord2, maze) {
     let visitArr = [];
     for (let i = 0; i < maze.length; i++) {
         visitArr.push(new Array(maze[i].length).fill(false));
@@ -25,6 +25,4 @@ function bfs(coord1, coord2, maze) {
         workQueue.push({ x: curVal.x, y: curVal.y + 1, distance: curVal.distance + 1});
     }
     return -1;
-}
-
-console.log(bfs([0, 0], [2, 0], [[0, 0, 0], [1, 1, 1], [0, 0, 0]]));
+};

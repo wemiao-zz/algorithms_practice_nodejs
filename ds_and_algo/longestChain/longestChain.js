@@ -1,22 +1,16 @@
 'use strict';
 
-const fs = require('fs');
+module.exports = function longestChain(words) {
+    if (words.length === 0) {
+        return 0;
+    }
 
-/*
- * Complete the 'longestChain' function below.
- *
- * The function is expected to return an INTEGER.
- * The function accepts STRING_ARRAY words as parameter.
- */
-
-function longestChain(words) {
-    // Write your code here
     words.sort((a, b) => a.length - b.length);
 
-    let dict = new Set(words);
-    let cacheTmp = words.filter((word) => word.length === 1 );
+    const dict = new Set(words);
+    let cache = words.filter((word) => word.length === 1 );
 
-    let cache = cacheTmp.reduce((acc, word) => {
+    cache = cache.reduce((acc, word) => {
         acc[word] = { count: 1, prev: null };
         return acc;
     }, {});
@@ -44,41 +38,11 @@ function longestChain(words) {
     }
 
     let value = 1;
-    let objMax;
     for (let wrd in cache) {
         if (cache[wrd].count > value) {
             value = cache[wrd].count;
-            objMax = wrd;
         }
     }
-    let count = 1;
-    while (objMax) {
-        console.log(objMax + ' ' + count++);
-        objMax = cache[objMax].prev;
-    }
-    console.log(value);
+
     return value;
-}
-
-function main() {
-    const ws = fs.createWriteStream('answer.txt');
-
-    const lineReader = require('readline').createInterface({
-        input: require('fs').createReadStream('input.txt')
-    });
-
-    let words = [];
-    lineReader.on('line', function (line) {
-        words.push(line);
-    });
-
-    lineReader.on('close', () => {
-        const result = longestChain(words);
-
-        ws.write(result + '\n');
-
-        ws.end();
-    });
-}
-
-main();
+};
