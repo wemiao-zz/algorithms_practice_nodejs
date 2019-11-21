@@ -1,7 +1,16 @@
-// this is a max heap
-module.exports = class MaxHeap {
-    constructor(arr = []) {
+/* note: this heap implementation accepts a custom object as so
+   { value: (value to be compared against),
+     ... whatever else you want to encode
+   }
+   this makes the space complexity a little higher, but lets you sort custom objects
+   (such as a dictionary of K, V pairs)
+   */
+class Heap {
+    // this is by default a min heap, to make it a max heap, use (a, b) => a.value < b.value
+    constructor(arr = [], comparator = (a, b) => a.value > b.value) {
         this.arr = arr;
+        this.comparator = comparator;
+        this.buildHeap();
     }
 
     // helper to find left child, right child, or parent
@@ -36,17 +45,19 @@ module.exports = class MaxHeap {
 
         // rightChild is outside array bounds, so only compare against left child
         if (rightChild >= arr.length) {
-            // do the swap, since right child is out of bounds, we are done processing and have reached the bottom of the heap
-            if (arr[i] < arr[leftChild]) {
+            // do the swap, since right child is out of bounds, we are done processing
+            // and have reached the bottom of the heap
+            if (this.comparator(arr[i], arr[leftChild])) {
                 this.swap(i, leftChild);
             }
             return;
-        // both leftChild and rightChild exist, so this case means root is greater than or equal to left child and right child, so heap is correct, no more action is necessary
-        } else if (arr[i] >= arr[leftChild] && arr[i] >= arr[rightChild]) {
+            // both leftChild and rightChild exist, so this case means root is greater
+            // than or equal to left child and right child, so heap is correct, no more action is necessary
+        } else if (this.comparator(arr[leftChild], arr[i]) && this.comparator(arr[rightChild], arr[i])) {
             return;
-        // if we reach here, root MUST be less than either leftChild, rightChild, or possibly both
-        // this is left child greater than right child case
-        } else if (arr[leftChild] > arr[rightChild]) {
+            // if we reach here, root MUST be less than either leftChild, rightChild, or possibly both
+            // this is left child greater than right child case
+        } else if (this.comparator(arr[rightChild], arr[leftChild])) {
             this.swap(i, leftChild);
             return this.siftDown(leftChild);
         }
@@ -84,7 +95,8 @@ module.exports = class MaxHeap {
     // keep sifting up and recursing as necessary
     siftUp(i) {
         const parValue = this.findNode(i, 'parent');
-        if (this.arr[i] > this.arr[parValue]) {
+        // parValue = -1 means we are at the root
+        if (parValue !== -1 && this.comparator(this.arr[parValue], this.arr[i])) {
             this.swap(i, parValue);
             this.siftUp(parValue);
         }
@@ -107,4 +119,8 @@ module.exports = class MaxHeap {
         this.siftDown(0);
         return popValue;
     }
+}
+
+module.exports = {
+    Heap: Heap
 };

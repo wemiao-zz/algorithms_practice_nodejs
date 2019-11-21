@@ -1,18 +1,3 @@
 module.exports = function digitalRoot(num) {
-    if (num < 10) {
-        return num;
-    }
-    return digitalRoot(addDigits(num));
+    return 1 + ((num - 1) % 9);
 };
-
-function addDigits(num) {
-    let sum = 0;
-    let val;
-    while (num > 0) {
-        val = num % 10;
-        sum += val;
-        num -= val;
-        num /= 10;
-    }
-    return sum;
-}

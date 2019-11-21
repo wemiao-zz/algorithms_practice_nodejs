@@ -11,14 +11,14 @@ module.exports = {
         "SharedArrayBuffer": "readonly"
     },
     "parserOptions": {
-        "ecmaVersion": 2018
+        "ecmaVersion": 2018,
     },
     "rules": {
-        "indent": ["error", 4, { "SwitchCase": 1}],
+        "indent": ["warn", 4, { "SwitchCase": 1}],
         "semi": ["error", "always"],
         "curly": ["error"],
         "brace-style": ["warn"],
-        "quotes": [2, "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
+        //"quotes": [2, "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
         "no-trailing-spaces": [2]
     }
 };
