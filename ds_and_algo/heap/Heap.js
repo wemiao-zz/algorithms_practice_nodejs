@@ -1,10 +1,14 @@
-/* note: this heap implementation accepts a custom object as so
-   { value: (value to be compared against),
-     ... whatever else you want to encode
-   }
-   this makes the space complexity a little higher, but lets you sort custom objects
-   (such as a dictionary of K, V pairs)
-   */
+/*  note: this heap implementation accepts a custom object as so, and is by default a min heap
+    {
+        value: (value to be compared against),
+        ... whatever else you want to encode
+    }
+    this makes the space complexity a little higher, but lets you sort custom objects
+    (such as a dictionary of K, V pairs)
+    you can also implement your own custom comparator => here are a few examples
+    (a, b) => a < b this will be a min heap for an array of numbers or strings
+    (a, b) => a.quality > b.quality this is a max heap comparing quality
+*/
 class Heap {
     // this is by default a min heap, to make it a max heap, use (a, b) => a.value < b.value
     constructor(arr = [], comparator = (a, b) => a.value > b.value) {
